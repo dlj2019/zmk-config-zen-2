@@ -1,3 +1,6 @@
+#define _________ &none
+#define X_______X &trans
+
 // LAYERS
 #define __MOUSE__    &mo MOUSE
 
