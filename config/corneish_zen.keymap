@@ -1,6 +1,17 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define QWERTY 0
+#define NUMBER 1
+#define SYMBOL 2
+#define FUNC   3
+#define MOUSE  4
+
+
+#include "keycodes.h"
+#include <dt-bindings/zmk/mouse.h>
 
 / {
   chosen {
@@ -68,6 +79,34 @@
    &trans &trans &trans &trans &trans &trans   &trans &kp N4 &kp N5 &kp N6 &kp N0    &trans
    &trans &trans &trans &trans &trans &trans   &trans &kp N1 &kp N2 &kp N3 &kp COMMA &kp DEL
                         &trans &trans &trans   &trans &trans &trans
+                        >;
+                };
+                function_layer {
+                        label = "MOUSE";
+
+//  ╔═════════╤═════════╤═════════╤═════════╤═════════╤═════════╗                       ╔═════════╤═════════╤═════════╤═════════╤═════════╤═════════╗
+//  ║         │         │         │         │         │         ║                       ║ SCROLL  │   U-L   │    U    │   U-R   │         │         ║
+//  ║         │         │         │         │         │         ║                       ║   UP    │         │         │         │         │         ║
+//  ╟─────────┼─────────┼─────────┼─────────┼─────────┼─────────╢                       ╟─────────┼─────────┼─────────┼─────────┼─────────┼─────────╢
+//  ║         │         │XXXXXXXXX│  SHIFT  │  CTRL   │         ║                       ║ SCROLL  │    L    │    D    │    R    │ SCROLL  │ SCROLL  ║
+//  ║         │         │XXXXXXXXX│         │         │         ║                       ║   DN    │         │         │         │  LEFT   │  RIGHT  ║
+//  ╟─────────┼─────────┼─────────┼─────────┼─────────┼─────────║                       ║─────────┼─────────┼─────────┼─────────┼─────────┼─────────╢
+//  ║         │         │         │         │         │         ║                       ║         │   D-L   │    D    │   D-R   │         │         ║
+//  ║         │         │         │         │         │         ║                       ║         │         │         │         │         │         ║
+//  ╚═════════╧═════════╧═════════╧═════════╬─────────┼─────────╬═════════╗   ╔═════════╬─────────┼─────────╬═════════╧═════════╧═════════╧═════════╝
+//                                          ║         │         │XXXXXXXXX║   ║  LEFT   │   MID   │  RIGHT  ║
+//                                          ║         │         │XXXXXXXXX║   ║  CLICK  │  CLICK  │  CLICK  ║
+//                                          ╚═════════╧═════════╧═════════╝   ╚═════════╧═════════╧═════════╝
+//  
+                mouse_layer { 
+                     label = "MOUSE"; bindings = <
+     _________ _________ _________ _________ _________ _________                         _SCRL_UP_ _M__UP_L_ __M__UP__ _M_UP_R__ _________ _________
+     _________ _________ X_______X __LSHFT__ __LCTRL__ _________                         _SCRL_DN_ _M__LEFT_ _M__DOWN_ _M_RIGHT_ _SCRL_LF_ _SCRL_RT_
+     _________ _________ _________ _________ _________ _________                         _________ _M__DN_L_ _M__DOWN_ _M__DN_R_ _________ _________
+                                             _________ _________ X_______X     _M_LCLCK_ _M_MCLCK_ _M_RCLCK_
+                        >;};
+
+                                               
                        >;
                 };
         };
