@@ -3,11 +3,11 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define QWERTY 0
-#define NUMBER 1
-#define SYMBOL 2
-#define FUNC   3
-#define MOUSE  4
+#define DEFAULT  0
+#define LOWER    1
+#define RAISE    2
+#define FUNCTION 3
+#define MOUSE    4
 
 
 #include "keycodes.h"
